@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 public class BookDetailActivity extends AppCompatActivity {
     @Override
@@ -24,7 +24,11 @@ public class BookDetailActivity extends AppCompatActivity {
 
         // 화면에 표시
         ImageView imageViewCover = findViewById(R.id.imageViewCover);
-        Picasso.get().load(imageURL).placeholder(R.drawable.placeholder_image).into(imageViewCover);
+        // Glide 라이브러리를 사용하여 이미지 로드 및 표시
+        Glide.with(this)
+                .load(imageURL)
+                .placeholder(R.drawable.placeholder_image)
+                .into(imageViewCover);
 
         TextView textViewTitle = findViewById(R.id.textViewTitle);
         textViewTitle.setText(title);

@@ -32,4 +32,19 @@ public class BookItem {
     public String getPublisher() { return publisher; }
 
     public String getDescription() { return description; }
+
+    public String id;
+    public String getId() { return id; }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        BookItem bookItem = (BookItem) obj;
+        return id.equals(bookItem.id);
+    }
 }

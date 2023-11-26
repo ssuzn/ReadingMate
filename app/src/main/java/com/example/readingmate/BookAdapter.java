@@ -2,7 +2,6 @@ package com.example.readingmate;
 
 // BookAdapter.java
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,18 +10,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
-import java.util.List;
 
-public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
-    private List<BookItem> bookList;
-    private Context context;
+public class BookAdapter extends ListAdapter<BookItem, BookAdapter.ViewHolder> {
 
-    public BookAdapter(List<BookItem> bookList, Context context) {
-        this.bookList = bookList;
+    private final OnItemClickListener itemClickListener;
+    private final Context context;
+
+    public interface OnItemClickListener {
+        void onItemClick(BookItem book);
+    }
+
+    public BookAdapter(OnItemClickListener itemClickListener, Context context) {
+        super(diffUtil);
+        this.itemClickListener = itemClickListener;
         this.context = context;
     }
 
@@ -35,8 +41,13 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        BookItem bookItem = bookList.get(position);
-        Picasso.get().load(bookItem.getImageURL()).placeholder(R.drawable.placeholder_image).into(holder.imageViewCover);
+        BookItem bookItem = getItem(position);
+
+        // Glide 라이브러리를 사용하여 이미지 로드 및 표시
+        Glide.with(context)
+                .load(bookItem.getImageURL())
+                .placeholder(R.drawable.placeholder_image)
+                .into(holder.imageViewCover);
 
         holder.textViewTitle.setText(bookItem.getTitle());
         holder.textViewAuthor.setText(bookItem.getAuthor());
@@ -46,21 +57,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         holder.buttonViewDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 책의 설명을 상세 화면으로 전달하여 표시
-                Intent intent = new Intent(context, BookDetailActivity.class);
-                intent.putExtra("title", bookItem.getTitle());
-                intent.putExtra("author", bookItem.getAuthor());
-                intent.putExtra("publisher", bookItem.getPublisher());
-                intent.putExtra("imageURL", bookItem.getImageURL());
-                intent.putExtra("description", bookItem.getDescription());
-                context.startActivity(intent);
+                itemClickListener.onItemClick(bookItem);
             }
         });
-    }
-
-    @Override
-    public int getItemCount() {
-        return bookList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -79,4 +78,16 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             buttonViewDetails = itemView.findViewById(R.id.buttonViewDetails);
         }
     }
+
+    private static final DiffUtil.ItemCallback<BookItem> diffUtil = new DiffUtil.ItemCallback<BookItem>() {
+        @Override
+        public boolean areItemsTheSame(BookItem oldItem, BookItem newItem) {
+            return oldItem.getId() == newItem.getId();
+        }
+
+        @Override
+        public boolean areContentsTheSame(BookItem oldItem, BookItem newItem) {
+            return oldItem.equals(newItem);
+        }
+    };
 }
