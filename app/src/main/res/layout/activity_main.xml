@@ -1,33 +1,56 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:padding="16dp">
 
-    <EditText
-        android:id="@+id/editTextSearch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:hint="검색어를 입력하세요"/>
-
-    <Button
-        android:id="@+id/buttonSearch"
+    <TextView
+        android:id="@+id/textViewAppName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextSearch"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"
-        android:text="검색"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="92dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="16dp"
+        android:text="ReadingMate"
+        android:textColor="#008080"
+        android:textSize="40dp"
+        android:textStyle="bold" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewAppName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="당신을 위한 도서 검색 어플"
+        android:textColor="#282828"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/btnSearchBooks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="검색하러 가기"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="#5F9EA0"
+        android:layout_below="@+id/textViewDescription"
+        android:layout_marginTop="16dp" />
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/buttonSearch"
-        android:layout_marginTop="16dp"/>
+        android:layout_below="@id/btnSearchBooks"
+        android:layout_marginTop="8dp">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/main"
+        android:scaleType="centerCrop" />
+    </FrameLayout>
 
 </RelativeLayout>

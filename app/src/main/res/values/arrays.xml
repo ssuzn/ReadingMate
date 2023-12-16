@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="best_seller_categories">
+        <item>국내도서</item>
+        <item>외국도서</item>
+        <item>만화</item>
+        <item>소설</item>
+        <item>시/에세이</item>
+        <item>인문</item>
+        <item>가정/생활/요리</item>
+        <item>건강</item>
+    </array>
+
+    <array name="best_seller_category_codes">
+        <item>100</item>
+        <item>101</item>
+        <item>102</item>
+        <item>103</item>
+        <item>104</item>
+        <item>105</item>
+        <item>106</item>
+        <item>107</item>
+    </array>
+</resources>

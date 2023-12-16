@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/loginText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:text="LOGIN"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+
+
+    <EditText
+        android:id="@+id/log_id"
+        android:layout_width="match_parent"
+        android:hint="아이디를 입력하세요."
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/log_password"
+        android:layout_width="match_parent"
+        android:hint="비밀번호를 입력하세요."
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Login"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#5F9EA0"
+        android:layout_marginBottom="16dp" />
+
+    <CheckBox
+        android:id="@+id/rememberCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아이디 저장"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <ListView
+        android:id="@+id/view_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="24" />
+
+    <TextView
+        android:id="@+id/text_result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0" />
+</LinearLayout>
