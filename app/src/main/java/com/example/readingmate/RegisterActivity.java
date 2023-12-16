@@ -53,11 +53,6 @@ public class RegisterActivity extends AppCompatActivity {
                         })
                         .create();
                 dialog.show();
-
-//                // 회원가입 완료 후 로그인 화면으로 이동
-//                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-//                startActivity(intent);
-//                finish(); // 현재 액티비티 종료
             }
         });
 
