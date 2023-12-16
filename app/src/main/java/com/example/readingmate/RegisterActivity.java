@@ -1,17 +1,22 @@
 package com.example.readingmate;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.app.Dialog;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText etUserId, etPassword, etEmail;
     private SignupPreferenceManager preferenceManager;
+    private AlertDialog dialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +41,23 @@ public class RegisterActivity extends AppCompatActivity {
                 // 회원가입 정보 저장
                 preferenceManager.saveUserInfo(userId, password, email);
 
-                // 회원가입 완료 후 로그인 화면으로 이동
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish(); // 현재 액티비티 종료
+                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                dialog = builder.setMessage("회원가입에 성공하셨습니다.")
+                        .setCancelable(false)
+                        .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                RegisterActivity.this.startActivity(intent);
+                            }
+                        })
+                        .create();
+                dialog.show();
+
+//                // 회원가입 완료 후 로그인 화면으로 이동
+//                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+//                startActivity(intent);
+//                finish(); // 현재 액티비티 종료
             }
         });
 
