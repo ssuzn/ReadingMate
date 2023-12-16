@@ -40,11 +40,22 @@
         android:layout_below="@+id/textViewDescription"
         android:layout_marginTop="16dp" />
 
+    <Button
+        android:id="@+id/btnBestBooks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="베스트셀러 가기"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="#5F9EA0"
+        android:layout_below="@+id/btnSearchBooks"
+        android:layout_marginTop="16dp" />
+
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/btnSearchBooks"
+        android:layout_below="@id/btnBestBooks"
         android:layout_marginTop="8dp">
     <ImageView
         android:layout_width="match_parent"

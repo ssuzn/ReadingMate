@@ -25,6 +25,7 @@
         <activity android:name="com.example.readingmate.MainActivity" />
         <activity android:name="com.example.readingmate.BookSearchActivity" />
         <activity android:name="com.example.readingmate.BookDetailsActivity" />
+        <activity android:name="com.example.readingmate.BestSellerActivity" />
         <activity android:name="com.example.readingmate.LoginActivity" />
 
 

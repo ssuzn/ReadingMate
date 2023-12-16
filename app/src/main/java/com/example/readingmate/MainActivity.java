@@ -13,11 +13,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 도서 검색 화면으로 이동하는 버튼 클릭 이벤트 처리
         findViewById(R.id.btnSearchBooks).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, BookSearchActivity.class));
+            }
+        });
+
+        findViewById(R.id.btnBestBooks).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, BestSellerActivity.class));
             }
         });
     }
